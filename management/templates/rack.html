@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content%}
+<i style = "color:grey;"onclick="goBack()" class="fas fa-angle-double-left fa-4x"></i>
+<i style = "float: right;color:grey;"onclick="goForward()" class="fas fa-angle-double-right fa-4x"></i>
+<br>
+<h1>Rack's positions</h1>
+<script>
+function MyTable() {
+  var max_col = [{% for rack in res %}{{rack.column_max}}{% endfor%}];
+  var max_row = [{% for rack in res %}{{rack.row_max}}{% endfor%}];
+  reserved_col = []
+  reserved_row = []
+  id = []
+  {% for position in pos %}
+  reserved_col.push({{position.column}});
+  reserved_row.push({{position.row}});
+  id.push({{position.id}});
+  {% endfor%}
+  document.write("<table style='border-collapse: collapse;width: 100%;border-collapse:separate; border-spacing:5px;>");
+  for (var i = 0;i<max_row;i++){
+
+  document.write("<tr style='border: 1px solid grey;'>");
+  for (var j = 0;j<max_col;j++)
+  {
+  var found = false
+  for (var k = 0; k<reserved_col.length;k++)
+  {
+    if( reserved_col[k] == j && reserved_row[k]==i){
+      document.write("<td data-link= '/fishdetail/"+id[k]+" 'height='100px' style=' background-color: rgba(255,0,0,.25);border: 1px solid grey;border-radius:10px;  vertical-align: top; padding: 7px'>")
+      document.write(i,j);
+      var found = true
+      continue
+    }
+
+  }
+  if (found != true){
+    document.write("<td data-link='/fishdetail/"+{{rack_pk}}+"/create/"+i+"/"+j+"' height='100px' style='border: 1px solid grey;border-radius:10px; vertical-align: top; padding: 7px'>")
+    document.write(i,j)
+  }
+  document.write("</td>")
+  }
+  document.write("</tr>")
+  }
+  document.write("</table>");
+}
+MyTable()
+
+
+
+$('td').click(function(){
+   window.location.href = $(this).data('link');
+});
+
+</script>
+<style>
+td:hover {
+  background-color: #f5f5f5 ;
+  cursor: pointer;
+}
+</style>
+{% endblock %}

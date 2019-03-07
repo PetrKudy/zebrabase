@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+    {% block content%}
+    <br>
+    <div style = 'background: #eceeee; border: 1px solid #42464b; border-radius: 12px;height: 200px;width: 500px; position:center; margin: auto;'>
+      <i style = "color:grey;"  onclick="goBack()" class="fas fa-angle-double-left fa-4x"></i>
+      <div style = 'text-align: center';>
+        <form method="post">
+          {% csrf_token %}
+          <br>
+            <p>Are you sure you want to delete?</p>
+          <button type="submit">Delete</button>
+          <button type="submit">Back</button>
+        </form>
+      </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content%}
+<i style = "color:grey;"onclick="goBack()" class="fas fa-angle-double-left fa-4x"></i>
+<br>
+<h1>Informations</h1>
+<table style="border-collapse: collapse;width: 100%;">
+  {% for one in info %}
+    <tr>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">Name:</th>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{one.stock__fishline__name}}</th>
+    </tr>
+    <tr>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">Amount:</th>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{one.amount}}</th>
+    </tr>
+    <tr>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">Date of birth:</th>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{one.stock__birthdate}}</th>
+    </tr>
+    <tr>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">Description:</th>
+      <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{one.stock__fishline__description}}</th>
+    </tr>
+  {% endfor%}
+</table>
+<br>
+<a style="padding-right:25px; color:grey" href="{{position}}/delete"><i class="fas fa-trash-alt fa-3x"></i></a>
+<a style="padding-right:25px; color:grey" href="{{position}}/update"><i class="fas fa-marker fa-3x"></i></a>
+
+  {% endblock %}

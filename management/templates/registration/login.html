@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Zebrabase-login</title>
+  </head>
+  <body  style= "background: linear-gradient(-45deg, #373B44, #4286f4) fixed;">
+
+    <div style = 'background: #eceeee; border: 1px solid #42464b; border-radius: 12px;height: 250px;width: 300px;  top: 0;right: 0;bottom: 0;left: 0;position:absolute; margin: auto;'>
+      <div style = 'text-align: center';>
+        <form method="post">
+          <br>
+          <h4>Login required</h4>
+          {% csrf_token %}
+          {{form.username.label}}<br>
+          {{form.username}}<br>
+          {{form.password.label}}<br>
+          {{form.password}}<br><br>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

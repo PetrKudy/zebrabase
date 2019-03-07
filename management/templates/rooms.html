@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content%}
+<i style = "visibility:hidden;color:grey;"  onclick="goBack()" class="fas fa-angle-double-left fa-4x"></i>
+<i style = "float: right;color:grey;"onclick="goForward()" class="fas fa-angle-double-right fa-4x"></i>
+<br>
+<h1>List of rooms</h1>
+<table style="border-collapse: collapse;width: 100%;">
+<tr>
+  <th style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd; text-align: left;">Room's number</th>
+  <th style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd; text-align: left;">Description</th>
+  <th style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd; text-align: left;"></th>
+  <th style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd; text-align: left;"></th>
+</tr>
+  {% for room in rooms %}
+<tr class = "select" data-link="{{room.pk}}">
+  <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{room.number}}</th>
+  <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{{room.description}}</th>
+  <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;"><a style="padding-right:25px; color:grey" href="{{room.pk}}/delete"><i class="fas fa-trash-alt fa-3x"></i></a></th>
+  <td style ="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;"><a style="padding-right:25px; color:grey" href="{{room.pk}}/update"><i class="fas fa-marker fa-3x"></i></a></th>
+</tr>
+  {% endfor%}
+</table>
+<a style= "color:grey;" href="{% url 'room_add'%}"><i class="far fa-plus-square fa-3x"></i></a>
+
+
+
+<script>
+$('.select').click(function(){
+   window.location.href = $(this).data('link');
+});
+</script>
+
+{% endblock %}

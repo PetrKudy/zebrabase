@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+    {% block content%}
+    <br>
+    <div style = 'background: #eceeee; border: 1px solid #42464b; border-radius: 12px;height: 350px;width: 500px; position:center; margin: auto;'>
+      <i style = "color:grey;"  onclick="goBack()" class="fas fa-angle-double-left fa-4x"></i>
+      <div style = 'text-align: center';>
+        <form method="post">
+          <h4>Update rack</h4>
+          {% csrf_token %}
+          {{form.name.label}}<br>
+          {{form.name}}<br>
+          {{form.column_max.label}}<br>
+          {{form.column_max}}<br>
+          {{form.row_max.label}}<br>
+          {{form.row_max}}<br><br>
+          <button type="submit">Update rack</button>
+        </form>
+      </div>
+    </div>
+    {% endblock %}

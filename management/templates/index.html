@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+    {% block content%}
+    {% load staticfiles %}
+    <br><br>
+    <img src="{% static "images/index_picture.jpg" %}" alt="not found" style = 'border-radius: 70%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.5);display: block; margin-left: auto; margin-right: auto; width: 50%;'>
+    <br>
+    <h2 style= 'text-align: center; text-shadow: 1px 1px grey;'>Work with fish database fast and easy</h2>
+    {% endblock %}
